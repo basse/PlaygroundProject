@@ -37,7 +37,7 @@ public class ThrowWithButtons : Physics2DObject
 		}
 
 		var torqueInput = (spinControl == Enums.KeyGroups.ArrowKeys) ? Input.GetAxis ("Horizontal") : Input.GetAxis ("Horizontal2");
-		if (torqueInput < Mathf.Epsilon) {
+		if (Mathf.Abs(torqueInput) < Mathf.Epsilon) {
 			torque = 0;
 		} else {
 			torque += torqueInput * torqueStrength;
