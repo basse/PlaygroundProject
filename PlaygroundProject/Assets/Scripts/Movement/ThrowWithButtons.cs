@@ -15,6 +15,7 @@ public class ThrowWithButtons : Physics2DObject
 	// strength of the push, and the axis on which it is applied (can be X or Y)
 	public float launchForceStrength = 0.2f;
 	public float torqueStrength = 0.1f;
+	public float drift = 0.05f;
 	private float torque;
 	private float launchForceMagnitude;
 	private bool launchKeyPressed;
@@ -48,7 +49,7 @@ public class ThrowWithButtons : Physics2DObject
 	// FixedUpdate is called every frame when the physics are calculated
 	void FixedUpdate() {
 		if (launch) {
-			var v = new Vector2(torque * 0.05f, 1).normalized;
+			var v = new Vector2(torque * drift, 1).normalized;
 			rigidbody2D.AddForce(v * launchForceMagnitude, ForceMode2D.Impulse);
 			rigidbody2D.AddTorque(-torque, ForceMode2D.Impulse);
 			launchForceMagnitude = 0;
